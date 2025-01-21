@@ -4,7 +4,7 @@ import PineconeLogo from '@/icons/PineconeLogo';
 const StepTwo = ({ handleNextStep, handleBackStep }) => {
   return (
     <div className="h-screen w-full bg-slate-100 flex flex-col items-center justify-center">
-      <div className="w-[480px] h-[740px] bg-white p-8 rounded-md shadow-xl">
+      <div className="w-[480px] h-[740px] bg-white p-8 rounded-md shadow-xl flex flex-col">
         <header className="pb-7">
           <PineconeLogo />
           <div className="text-[#202124] self-stretch text-2xl font-semibold tracking-tight pb-2">

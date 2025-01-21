@@ -4,7 +4,7 @@ import PineconeLogo from '@/icons/PineconeLogo';
 const StepOne = ({ handleNextStep }) => {
   return (
     <div className="h-screen w-full bg-slate-100 flex flex-col items-center justify-center">
-      <div className="w-[480px] h-[655px] bg-white p-8 rounded-md shadow-xl">
+      <div className="w-[480px] h-[655px] bg-white p-8 rounded-md shadow-xl flex flex-col">
         <header className="pb-7">
           <PineconeLogo />
           <div className="text-[#202124] self-stretch text-2xl font-semibold tracking-tight pb-2">
@@ -14,7 +14,7 @@ const StepOne = ({ handleNextStep }) => {
             Please provide all current information accurately
           </div>
         </header>
-        <main>
+        <main className="flex-grow">
           <div className="flex flex-col gap-2 mb-2">
             First name
             <input
