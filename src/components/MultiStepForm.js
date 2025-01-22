@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
@@ -13,8 +13,39 @@ const MultiStepForm = () => {
     firstName: '',
     lastName: '',
     userName: '',
-    
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+    dateBirth: '',
+    profileImg: '',
   });
+
+  const [formError, setFormError] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+    dateBirth: '',
+    profileImg: '',
+  });
+
+  const handleError = (errors) => {
+    setFormError((prev) => ({
+      ...prev,
+      ...errors,
+    }));
+  };
+
+  const clearError = (name) => {
+    setFormError((prev) => ({
+      ...prev,
+      [name]: '',
+    }));
+  };
 
   const Step = [StepOne, StepTwo, StepThree, FinishedForm][currentStep];
 
@@ -30,13 +61,22 @@ const MultiStepForm = () => {
     }
   };
 
+  useEffect(() => {
+    const data = localStorage.getItem('formData');
+    const data1 = JSON.parse(data);
+    console.log(data1);
+  }, []);
+
   return (
     <div className="flex flex-col">
       <Step
+        errors={formError}
+        formValue={formValue}
+        clearError={clearError}
+        handleError={handleError}
+        setFormValue={setFormValue}
         handleBackStep={handleBackStep}
         handleNextStep={handleNextStep}
-        formValue={formValue}
-        setFormValue={setFormValue}
       />
     </div>
   );
