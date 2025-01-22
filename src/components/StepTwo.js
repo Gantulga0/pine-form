@@ -16,28 +16,36 @@ const StepTwo = ({ handleNextStep, handleBackStep }) => {
         </header>
         <main className="flex-grow">
           <div className="flex flex-col gap-2 mb-2">
-            Email
+            <label>
+              Email <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your email"
               className="p-3 border rounded-xl hover:border-blue-400"
             ></input>
           </div>
           <div className="flex flex-col gap-2 mb-2">
-            Phone number
+            <label>
+              Phone number <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your phone number"
               className="p-3 border rounded-xl hover:border-blue-400"
             ></input>
           </div>
           <div className="flex flex-col gap-2 mb-2">
-            Password
+            <label>
+              Password <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your password"
               className="p-3 border rounded-xl hover:border-blue-400"
             ></input>
           </div>
           <div className="flex flex-col gap-2">
-            Confirm password
+            <label>
+              Confirm password <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your password"
               className="p-3 border rounded-xl hover:border-blue-400"

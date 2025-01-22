@@ -16,21 +16,27 @@ const StepOne = ({ handleNextStep }) => {
         </header>
         <main className="flex-grow">
           <div className="flex flex-col gap-2 mb-2">
-            First name
+            <label>
+              First name <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your first name"
               className="p-3 border rounded-xl hover:border-blue-400"
             ></input>
           </div>
           <div className="flex flex-col gap-2 mb-2">
-            Last name
+            <label>
+              Last name <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your last name"
               className="p-3 border rounded-xl hover:border-blue-400"
             ></input>
           </div>
           <div className="flex flex-col gap-2">
-            Username
+            <label>
+              Username <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your username"
               className="p-3 border rounded-xl hover:border-blue-400"

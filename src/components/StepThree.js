@@ -16,7 +16,9 @@ const StepThree = ({ handleNextStep, handleBackStep }) => {
         </header>
         <main className="flex-grow">
           <div className="flex flex-col gap-2 mb-2">
-            Date of birth
+          <label>
+              Date of birth <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your email"
               type="date"
@@ -24,7 +26,9 @@ const StepThree = ({ handleNextStep, handleBackStep }) => {
             ></input>
           </div>
           <div className="flex flex-col gap-2 mb-2">
-            Profile image
+            <label>
+              Profile image <span className="text-red-500">*</span>
+            </label>
             <input
               placeholder="Your phone number"
               type="file"

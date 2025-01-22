@@ -13,6 +13,7 @@ const MultiStepForm = () => {
     firstName: '',
     lastName: '',
     userName: '',
+    
   });
 
   const Step = [StepOne, StepTwo, StepThree, FinishedForm][currentStep];
