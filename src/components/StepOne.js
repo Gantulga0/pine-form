@@ -70,6 +70,7 @@ const StepOne = ({
             </label>
             <input
               name="lastName"
+              onChange={handleChange}
               placeholder="Your last name"
               className={`${
                 errors.lastName.length > 0
@@ -78,7 +79,7 @@ const StepOne = ({
               }`}
             ></input>
             {errors.lastName.length > 0 && (
-              <p className="text-red-500">{errors.firstName}</p>
+              <p className="text-red-500">{errors.lastName}</p>
             )}
           </div>
           <div className="flex flex-col gap-2">
@@ -86,9 +87,18 @@ const StepOne = ({
               Username <span className="text-red-500">*</span>
             </label>
             <input
+              name="userName"
+              onChange={handleChange}
               placeholder="Your username"
-              className="p-3 border rounded-xl hover:border-blue-400"
+              className={`${
+                errors.lastName.length > 0
+                  ? 'p-3 border border-red-500 rounded-xl'
+                  : 'p-3 border rounded-xl'
+              }`}
             ></input>
+            {errors.userName.length > 0 && (
+              <p className="text-red-500">{errors.userName}</p>
+            )}
           </div>
         </main>
         <footer className="pt-24">
