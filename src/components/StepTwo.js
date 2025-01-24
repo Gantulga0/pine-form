@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PineconeLogo from '@/icons/PineconeLogo';
 import { isStepTwoValid } from '@/utils/stepTwoValidation';
 
@@ -11,6 +11,14 @@ const StepTwo = ({
   handleError,
   setFormValue,
 }) => {
+
+  useEffect(() => {
+    const savedFormData = localStorage.getItem('formData');
+    if (savedFormData) {
+      setFormValue(JSON.parse(savedFormData));
+    }
+  }, [setFormValue]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue((prev) => ({
@@ -19,6 +27,7 @@ const StepTwo = ({
     }));
     clearError(name);
   };
+
   const handleFormNextStep = () => {
     const { isValid, errors } = isStepTwoValid(formValue);
 
@@ -34,12 +43,14 @@ const StepTwo = ({
     }
     handleError(errors);
   };
+
   const handleFormBackStep = () => {
     handleBackStep();
   };
+
   return (
     <div className="h-screen w-full bg-slate-100 flex flex-col items-center justify-center">
-      <div className="w-[480px] h-[740px] bg-white p-8 rounded-md shadow-xl flex flex-col">
+      <div className="w-[480px] min-h-[740px] bg-white p-8 rounded-md shadow-xl flex flex-col">
         <header className="pb-7">
           <PineconeLogo />
           <div className="text-[#202124] self-stretch text-2xl font-semibold tracking-tight pb-2">
@@ -58,6 +69,7 @@ const StepTwo = ({
               name="email"
               type="email"
               onChange={handleChange}
+              value={formValue.email || ''}
               placeholder="Your email"
               className={`${
                 errors.email.length > 0
@@ -76,6 +88,7 @@ const StepTwo = ({
             <input
               name="phoneNumber"
               onChange={handleChange}
+              value={formValue.phoneNumber || ''}
               placeholder="Your phone number"
               className={`${
                 errors.phoneNumber.length > 0
@@ -95,6 +108,7 @@ const StepTwo = ({
               name="password"
               type="password"
               onChange={handleChange}
+              value={formValue.password || ''}
               placeholder="Your password"
               className={`${
                 errors.password.length > 0
@@ -114,9 +128,10 @@ const StepTwo = ({
               name="confirmPassword"
               type="password"
               onChange={handleChange}
+              value={formValue.confirmPassword || ''}
               placeholder="Your password"
               className={`${
-                errors.firstName.length > 0
+                errors.confirmPassword.length > 0
                   ? 'p-3 border border-red-500 rounded-xl'
                   : 'p-3 border rounded-xl'
               }`}

@@ -11,7 +11,13 @@ const StepOne = ({
   handleError,
   setFormValue,
 }) => {
-  
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('formData'));
+    if (storedData) {
+      setFormValue(storedData);
+    }
+  }, [setFormValue]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue((prev) => ({
@@ -32,12 +38,12 @@ const StepOne = ({
       localStorage.setItem('formData', JSON.stringify(localData));
 
       handleNextStep();
-    }   
+    }
     handleError(errors);
   };
   return (
     <div className="h-screen w-full bg-slate-100 flex flex-col items-center justify-center">
-      <div className="w-[480px] h-[655px] bg-white p-8 rounded-md shadow-xl flex flex-col">
+      <div className="w-[480px] min-h-[655px] bg-white p-8 rounded-md shadow-xl flex flex-col">
         <header className="pb-7">
           <PineconeLogo />
           <div className="text-[#202124] self-stretch text-2xl font-semibold tracking-tight pb-2">
@@ -55,6 +61,7 @@ const StepOne = ({
             <input
               name="firstName"
               onChange={handleChange}
+              value={formValue.firstName || ''}
               placeholder="Your first name"
               className={`${
                 errors.firstName.length > 0
@@ -73,6 +80,7 @@ const StepOne = ({
             <input
               name="lastName"
               onChange={handleChange}
+              value={formValue.lastName || ''}
               placeholder="Your last name"
               className={`${
                 errors.lastName.length > 0
@@ -91,6 +99,7 @@ const StepOne = ({
             <input
               name="userName"
               onChange={handleChange}
+              value={formValue.userName || ''}
               placeholder="Your username"
               className={`${
                 errors.lastName.length > 0
