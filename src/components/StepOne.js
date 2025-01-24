@@ -1,6 +1,7 @@
 import React from 'react';
 import PineconeLogo from '@/icons/PineconeLogo';
 import { isStepOneValid } from '@/utils/stepOneValidation';
+import { useEffect } from 'react';
 
 const StepOne = ({
   handleNextStep,
@@ -10,6 +11,7 @@ const StepOne = ({
   handleError,
   setFormValue,
 }) => {
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue((prev) => ({
@@ -30,7 +32,7 @@ const StepOne = ({
       localStorage.setItem('formData', JSON.stringify(localData));
 
       handleNextStep();
-    }
+    }   
     handleError(errors);
   };
   return (

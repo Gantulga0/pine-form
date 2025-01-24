@@ -2,7 +2,6 @@ export const isStepTwoValid = (data) => {
   const { email, phoneNumber, password, confirmPassword } = data;
   const errors = {};
   let isValid = true;
-  console.log(phoneNumber);
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!email || !emailRegex.test(email)) {

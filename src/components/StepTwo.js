@@ -75,7 +75,6 @@ const StepTwo = ({
             </label>
             <input
               name="phoneNumber"
-              type="number"
               onChange={handleChange}
               placeholder="Your phone number"
               className={`${

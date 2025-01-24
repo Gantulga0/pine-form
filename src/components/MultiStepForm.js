@@ -62,9 +62,9 @@ const MultiStepForm = () => {
   };
 
   useEffect(() => {
-    const data = localStorage.getItem('formData');
-    const data1 = JSON.parse(data);
-    console.log(data1);
+    let data = localStorage.getItem('formData');
+    data = JSON.parse(data);
+    console.log(data);
   }, []);
 
   return (
