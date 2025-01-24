@@ -22,6 +22,24 @@ const StepThree = ({
     clearError(name);
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    setFormValue((prev) => ({
+      ...prev,
+      profileImg: file,
+    }));
+    clearError('profileImg');
+  };
+
   const handleRemoveImage = () => {
     setImagePreview(null);
     setFormValue((prev) => ({
