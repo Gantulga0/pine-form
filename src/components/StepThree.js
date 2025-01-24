@@ -13,20 +13,6 @@ const StepThree = ({
 }) => {
   const [imagePreview, setImagePreview] = useState(null);
 
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('formData'));
-    if (storedData) {
-      setFormValue(storedData);
-      if (storedData.profileImg) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setImagePreview(reader.result);
-        };
-        reader.readAsDataURL(storedData.profileImg);
-      }
-    }
-  }, [setFormValue]);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue((prev) => ({
@@ -34,24 +20,6 @@ const StepThree = ({
       [name]: value,
     }));
     clearError(name);
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    setFormValue((prev) => ({
-      ...prev,
-      profileImg: file,
-    }));
-    clearError('profileImg');
   };
 
   const handleRemoveImage = () => {

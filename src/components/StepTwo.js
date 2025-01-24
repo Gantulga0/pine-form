@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PineconeLogo from '@/icons/PineconeLogo';
 import { isStepTwoValid } from '@/utils/stepTwoValidation';
 
@@ -11,6 +11,7 @@ const StepTwo = ({
   handleError,
   setFormValue,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const savedFormData = localStorage.getItem('formData');
@@ -100,13 +101,14 @@ const StepTwo = ({
               <p className="text-red-500">{errors.phoneNumber}</p>
             )}
           </div>
-          <div className="flex flex-col gap-2 mb-2">
+
+          <div className="flex flex-col gap-2 mb-2 relative">
             <label>
               Password <span className="text-red-500">*</span>
             </label>
             <input
               name="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               onChange={handleChange}
               value={formValue.password || ''}
               placeholder="Your password"
@@ -115,7 +117,14 @@ const StepTwo = ({
                   ? 'p-3 border border-red-500 rounded-xl'
                   : 'p-3 border rounded-xl'
               }`}
-            ></input>
+            />
+            <button
+              type="button"
+              className="absolute right-3 top-[2.9rem] text-sm text-blue-500"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
             {errors.password.length > 0 && (
               <p className="text-red-500">{errors.password}</p>
             )}
@@ -126,7 +135,7 @@ const StepTwo = ({
             </label>
             <input
               name="confirmPassword"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               onChange={handleChange}
               value={formValue.confirmPassword || ''}
               placeholder="Your password"
@@ -135,7 +144,7 @@ const StepTwo = ({
                   ? 'p-3 border border-red-500 rounded-xl'
                   : 'p-3 border rounded-xl'
               }`}
-            ></input>
+            />
             {errors.confirmPassword.length > 0 && (
               <p className="text-red-500">{errors.confirmPassword}</p>
             )}
