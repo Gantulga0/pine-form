@@ -5,6 +5,7 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import FinishedForm from './FinishedForm';
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -67,18 +68,35 @@ const MultiStepForm = () => {
     console.log(data);
   }, []);
 
+  const animationVariants = {
+    enter: { opacity: 0, x: 100 },
+    center: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -100 },
+  };
+
   return (
-    <div className="flex flex-col">
-      <Step
-        errors={formError}
-        formValue={formValue}
-        clearError={clearError}
-        handleError={handleError}
-        setFormValue={setFormValue}
-        handleBackStep={handleBackStep}
-        handleNextStep={handleNextStep}
-      />
-    </div>
+    <AnimatePresence>
+      <motion.div
+        key={currentStep}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        variants={animationVariants}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="flex flex-col">
+          <Step
+            errors={formError}
+            formValue={formValue}
+            clearError={clearError}
+            handleError={handleError}
+            setFormValue={setFormValue}
+            handleBackStep={handleBackStep}
+            handleNextStep={handleNextStep}
+          />
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

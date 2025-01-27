@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PineconeLogo from '@/icons/PineconeLogo';
 import { isStepTwoValid } from '@/utils/stepTwoValidation';
 
+
 const StepTwo = ({
   handleBackStep,
   handleNextStep,

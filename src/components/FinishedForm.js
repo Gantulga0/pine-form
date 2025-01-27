@@ -1,7 +1,7 @@
 import React from 'react';
 import PineconeLogo from '@/icons/PineconeLogo';
 
-const FinishedForm = ({ handleNextStep, handleBackStep }) => {
+const FinishedForm = () => {
   return (
     <div className="h-screen w-full bg-slate-100 flex flex-col items-center justify-center">
       <div className="w-[480px] h-auto bg-white p-8 rounded-md shadow-xl">
